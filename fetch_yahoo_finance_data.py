@@ -7,7 +7,7 @@ import datetime
 # define start date and end date
 start = datetime.datetime(2018, 1, 1)
 end = datetime.datetime(2021, 6, 1)
-explore_data_insights = 'NO'
+explore_data_insights = 'YES'
 
 # Bank of America
 BAC = web.DataReader("BAC", 'yahoo', start, end)
@@ -46,13 +46,13 @@ if explore_data_insights == 'YES':
 
     # get minimum closing price for all stocks from banks over the given time-frame
     minimum_closing_price = bank_stocks.xs(key='Close', axis=1, level='Stock Information').min()
-    print('Minimum closing price for all stocks from banks over the given time-frame: {}'.format(minimum_closing_price))
+    print('Minimum closing price for all stocks from banks over the given time-frame:\n{}'.format(minimum_closing_price))
 
     # check the date on occurrence of worst drop in returns
-    print('Date of occurrence for worst one-day drop in returns: {}'.format(returns.idxmin()))
+    print('Date of occurrence for worst one-day drop in returns:\n{}'.format(returns.idxmin()))
 
     # check the date on occurrence of best gain in returns
-    print('Date of occurrence for best one-day gain in returns: {}'.format(returns.idxmax()))
+    print('Date of occurrence for best one-day gain in returns:\n{}'.format(returns.idxmax()))
 
     # check standard deviation for each stock. higher value shows risk in returns
-    print('Standard deviation - Higher value shows higher risk in returns'.format(returns.std()))
+    print('Standard deviation - Higher value shows higher risk in returns:\n{}'.format(returns.std()))
